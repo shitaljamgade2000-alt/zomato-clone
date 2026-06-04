@@ -68,7 +68,7 @@ export default function OwnerDashboardPage() {
   return (
     <div className="dashboard-page">
       <div className="cart-page-header">Owner Dashboard 🏪</div>
-      {message && <div className="field-error" style={{ marginBottom: 12 }}>{message}</div>}
+      {message && <div className="field-success" style={{ marginBottom: 12 , color:'green' }}>{message}</div>}
 
       <div className="dashboard-tabs">
         {['restaurants', 'add-restaurant', 'menu', 'orders'].map((t) => (
@@ -199,7 +199,7 @@ export default function OwnerDashboardPage() {
                   name="image"
                   formik={formik}
                 /> */}
-               {/* <div><label htmlFor="image" style={{ fontSize: "14px" }}>Restaurant Image</label><br />
+                {/* <div><label htmlFor="image" style={{ fontSize: "14px" }}>Restaurant Image</label><br />
                   <input
                     type="file"
                     accept="image/*"
@@ -290,7 +290,10 @@ export default function OwnerDashboardPage() {
                 });
                 resetForm();
                 loadMenu(selectedId);
+
                 setMessage('Menu item added');
+
+                setTimeout(() => setMessage(''), 3000);
               } catch (err) {
                 setMessage(err.message);
               } finally {

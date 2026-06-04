@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import './EmailOtpVerification.css';
+import { useDispatch } from 'react-redux';
+import { verifyEmailOTP } from '../../features/auth/authSlice';
 
 export default function EmailOtpVerification({
   email,
@@ -15,6 +17,7 @@ export default function EmailOtpVerification({
   const [timer, setTimer] = useState(60);
   const [canResend, setCanResend] = useState(false);
   const inputRefs = useRef([]);
+  const dispatch = useDispatch();
 
   // Timer for OTP expiry
   useEffect(() => {
@@ -93,7 +96,8 @@ export default function EmailOtpVerification({
       setLocalError('');
       
       // Call resend endpoint
-      await authContext.resendEmailOTP(email);
+      // await authContext.resendEmailOTP(email);
+      await dispatch(resendEmailOTP({ email }))
       
       setTimer(60);
       setCanResend(false);

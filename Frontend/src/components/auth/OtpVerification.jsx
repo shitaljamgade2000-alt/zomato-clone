@@ -92,7 +92,7 @@ export default function OtpVerification({ phone, countryCode = '+91', onSuccess,
       setLocalError('');
       
       // Call resend endpoint
-      await authContext.resendPhoneOTP(phone, countryCode);
+      // await authContext.resendPhoneOTP(phone, countryCode);
       
       setTimer(60);
       setCanResend(false);

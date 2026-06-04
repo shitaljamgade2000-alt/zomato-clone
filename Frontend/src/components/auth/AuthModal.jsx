@@ -20,59 +20,36 @@ export default function AuthModal({ onClose, onSuccess, initialTab = 'login', in
 
   const isPartnerSignup = tab === 'signup' && initialRole === ROLES.OWNER;
 
-  const role = JSON.parse(localStorage.getItem('zomato_auth'))?.role;
-
-  // const handleLogin = async (values, { setSubmitting }) => {
-  //   setApiError('');
-  //   try {
-  //     await dispatch(loginThunk({ email: values.email, password: values.password })).unwrap();
-  //     onSuccess?.();
-  //     onClose();
-  //     if(role === "restaurant_owner"){
-  //       alert("Logged in as restaurant owner")
-  //       navigate('/owner')
-  //     }else if(role === "delivery_partner"){
-  //       navigate('/driver')
-  //     }else if(role === "customer"){
-  //       navigate('/')
-  //     }
-  //     // navigate('/')
-  //   } catch (err) {
-  //     setApiError(err?.message || 'Login failed');
-  //   } finally {
-  //     setSubmitting(false);
-  //   }
-  // };
 
   const handleLogin = async (values, { setSubmitting }) => {
-  setApiError('');
+    setApiError('');
 
-  try {
-    const user = await dispatch(
-      loginThunk({
-        email: values.email,
-        password: values.password,
-      })
-    ).unwrap();
+    try {
+      const user = await dispatch(
+        loginThunk({
+          email: values.email,
+          password: values.password,
+        })
+      ).unwrap();
 
-    console.log(user);
+      console.log(user);
 
-    onSuccess?.();
-    onClose();
+      onSuccess?.();
+      onClose();
 
-    if (user?.user?.role === 'restaurant_owner') {
-      navigate('/owner');
-    } else if (user?.user?.role === 'delivery_partner') {
-      navigate('/delivery');
-    } else {
-      navigate('/');
+      if (user?.user?.role === 'restaurant_owner') {
+        navigate('/owner');
+      } else if (user?.user?.role === 'delivery_partner') {
+        navigate('/delivery');
+      } else {
+        navigate('/');
+      }
+    } catch (err) {
+      setApiError(err?.message || 'Login failed');
+    } finally {
+      setSubmitting(false);
     }
-  } catch (err) {
-    setApiError(err?.message || 'Login failed');
-  } finally {
-    setSubmitting(false);
-  }
-};
+  };
 
   const handleSignup = async (values, { setSubmitting }) => {
     setApiError('');
@@ -84,6 +61,7 @@ export default function AuthModal({ onClose, onSuccess, initialTab = 'login', in
         role: initialRole || 'customer',
       })).unwrap();
       onSuccess?.();
+      // setAuthMode('login');
       onClose();
     } catch (err) {
       setApiError(err?.message || 'Sign up failed');
@@ -195,7 +173,7 @@ export default function AuthModal({ onClose, onSuccess, initialTab = 'login', in
                       I agree to Zomato&apos;s{' '}
                       <button
                         type="button"
-                        onClick={() => {}}
+                        onClick={() => { }}
                         style={{
                           background: 'none',
                           border: 'none',
@@ -211,7 +189,7 @@ export default function AuthModal({ onClose, onSuccess, initialTab = 'login', in
                       and{' '}
                       <button
                         type="button"
-                        onClick={() => {}}
+                        onClick={() => { }}
                         style={{
                           background: 'none',
                           border: 'none',
@@ -257,6 +235,7 @@ export default function AuthModal({ onClose, onSuccess, initialTab = 'login', in
           )}
         </p>
       </div>
+      
     </div>
   );
 }
