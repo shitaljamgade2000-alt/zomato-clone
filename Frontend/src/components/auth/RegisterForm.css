@@ -1,0 +1,28 @@
+/* RegisterForm.css */
+
+.register-form {
+  width: 100%;
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.register-header h2 {
+  font-size: 20px;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.register-header p {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+.register-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

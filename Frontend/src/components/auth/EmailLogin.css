@@ -1,0 +1,11 @@
+/* EmailLogin.css */
+
+.email-login {
+  width: 100%;
+}
+
+.email-login form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

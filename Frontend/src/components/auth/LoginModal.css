@@ -1,0 +1,97 @@
+/* LoginModal.css - Main modal styling */
+
+.login-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.login-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+  padding: 5px;
+}
+
+.modal-close:hover {
+  color: #000;
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.modal-logo {
+  font-size: 32px;
+  color: #e74c3c;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+.modal-subtitle {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+.modal-error {
+  background-color: #fee;
+  color: #c33;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  border: 1px solid #fcc;
+}
+
+.modal-content {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .login-modal {
+    padding: 30px 20px;
+  }
+
+  .modal-logo {
+    font-size: 24px;
+  }
+}
