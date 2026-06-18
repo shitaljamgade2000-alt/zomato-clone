@@ -23,7 +23,7 @@ exports.createPaymentIntent = async (req, res) => {
     const user = await User.findByPk(req.user.id);
     const receiptEmail = user?.email && isValidEmail(user.email) ? user.email.trim() : undefined;
 
-    const stripe = getStripe();
+    const stripe = await getStripe();
     const intentPayload = {
       amount: amountPaise,
       currency: currency.toLowerCase(),

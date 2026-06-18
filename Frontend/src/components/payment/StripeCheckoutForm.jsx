@@ -8,6 +8,8 @@ export default function StripeCheckoutForm({ amountLabel, onSuccess, onBack, dis
 
   const handlePay = async (e) => {
     e.preventDefault();
+
+    if (processing) return;
     if (!stripe || !elements) return;
 
     setProcessing(true);

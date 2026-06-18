@@ -45,8 +45,18 @@ const orderController = {
           return res.status(400).json({ message: 'Stripe payment intent is required' });
         }
 
-        const stripe = getStripe();
-        const intent = await stripe.paymentIntents.retrieve(stripe_payment_intent_id);
+        // const stripe = await getStripe();
+        // const intent = await stripe.paymentIntents.retrieve(stripe_payment_intent_id);
+        
+        const stripe = await getStripe();
+
+if (!stripe || !stripe.paymentIntents) {
+  throw new Error("Stripe is not initialized properly");
+}
+
+const intent = await stripe.paymentIntents.retrieve(
+  stripe_payment_intent_id
+);
 
         if (intent.status !== 'succeeded') {
           return res.status(400).json({
