@@ -18,15 +18,15 @@ export default function OwnerDashboardPage() {
   const [tab, setTab] = useState('restaurants');
   const [message, setMessage] = useState('');
 
-  const [imagePreview, setImagePreview] = useState('');
+  // const [imagePreview, setImagePreview] = useState('');
 
-  useEffect(() => {
-    return () => {
-      if (imagePreview) {
-        URL.revokeObjectURL(imagePreview);
-      }
-    };
-  }, [imagePreview]);
+  // useEffect(() => {
+  //   return () => {
+  //     if (imagePreview) {
+  //       URL.revokeObjectURL(imagePreview);
+  //     }
+  //   };
+  // }, [imagePreview]);
 
   const load = useCallback(async () => {
     setLoading(true);
